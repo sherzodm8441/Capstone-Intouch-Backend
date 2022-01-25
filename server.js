@@ -19,9 +19,9 @@ app.use(express.urlencoded({extended : true}))
 // } )
 
 
-//app.use('/api', require('./api/index'))
+app.use('/api', require('./api/index'))
 
-db.sync({force : true}).then(() => {
+db.sync().then(() => {
     console.log("Successfully connected to db") 
 }).catch((error) => {
     console.log(error)
