@@ -1,16 +1,16 @@
 const Sequelize = require('sequelize')
 const db = require('./database')
 
-const Root = db.define('roots', {
+const User = db.define('users', {
     firstName:{
         type: Sequelize.STRING,
-        allowNull: false
+        
     },
     lastName:{
         type: Sequelize.STRING,
-        allowNull: false
+        
     },
-    phone:{
+    googleId:{
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -19,4 +19,4 @@ const Root = db.define('roots', {
     }
 })
 
-module.exports = Root
+module.exports = User
