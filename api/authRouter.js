@@ -27,13 +27,13 @@ router.get( "/google",
 );
 
 router.get( "/google/callback",
-  passport.authenticate("google", { session: true }),
+  passport.authenticate("google", { session: true, successRedirect: "http://localhost:3000/" }),
   (req, res) => {
     res.send(req.user);
   }
 );
 
-// successRedirect: "http://localhost:3000/"
+// 
 
 router.get("/logout", (req, res) => {
     req.logout();
