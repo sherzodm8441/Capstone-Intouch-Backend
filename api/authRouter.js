@@ -27,14 +27,14 @@ router.get( "/google",
 );
 
 router.get( "/google/callback",
-  passport.authenticate("google", { session: true }),
+  passport.authenticate("google", { session: true, successRedirect: "https://intouchttp.netlify.app/" }),
   (req, res) => {
     res.send(req.user);
   }
 );
 
 //this is back in
-// , successRedirect: "http://localhost:3000/"
+// , successRedirect: "https://intouchttp.netlify.app/"
 
 router.get("/logout", (req, res) => {
     req.logout();
