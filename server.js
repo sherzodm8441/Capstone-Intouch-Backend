@@ -36,6 +36,8 @@ app.use('/api', require('./api/index'))
 const authRouter = require("./api/authRouter");
 app.use("/auth", authRouter);
 
+app.use('/sms', require('./sendMessage'))
+
 db.sync().then(() => {
     console.log("Successfully connected to db") 
 }).catch((error) => {
