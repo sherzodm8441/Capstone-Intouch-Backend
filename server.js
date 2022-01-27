@@ -26,7 +26,7 @@ const port = process.env.PORT || "5000"
 
 app.use(cors({
     name: "session",
-    origin: "http://localhost:3000",
+    // origin: "http://localhost:3000",
     credentials: true
 }))
 app.use(morgan('dev'))
