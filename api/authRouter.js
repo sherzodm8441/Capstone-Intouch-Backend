@@ -42,10 +42,10 @@ router.get("/logout", (req, res) => {
       return next(err);
     }
     else {
-      res.status(204).end();
+      res.status(204)
     }
   });
-    res.redirect("http://localhost:3000/");
+  res.redirect("http://localhost:5000/auth");
 });
 
 module.exports = router;

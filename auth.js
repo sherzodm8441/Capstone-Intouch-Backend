@@ -29,7 +29,6 @@ passport.use(
           console.log(id.dataValues.id)
           user = {
             id: id.dataValues.id,
-            googleId : account.sub,
             name: account.given_name,
             img: account.picture,
           };
@@ -50,12 +49,12 @@ passport.use(
   )
 );
 
-passport.serializeUser((user, done) => {
-  // loads into req.session.passport.user
-  done(null, user);
-});
+// passport.serializeUser((user, done) => {
+//   // loads into req.session.passport.user
+//   done(null, user);
+// });
 
-passport.deserializeUser((user, done) => {
-  // loads into req.user
-  done(null, user);
-});
+// passport.deserializeUser((user, done) => {
+//   // loads into req.user
+//   done(null, user);
+// });

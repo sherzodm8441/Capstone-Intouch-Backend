@@ -3,9 +3,22 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const { db } = require('./db')
+const { User } = require('./db')
 const session = require('express-session')
 const passport = require('passport')
 require('./auth')
+
+
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findByPk(id);
+    done(null, user);
+  }
+  catch (err) {
+    done(err);
+  }
+});
 
 
 const app = express()
@@ -32,10 +45,8 @@ app.use(passport.session());
 
 
 app.use('/api', require('./api/index'))
-
-const authRouter = require("./api/authRouter");
-app.use("/auth", authRouter);
-
+app.use("/auth", require("./api/authRouter"));
+app.use("/customAuth", require("./customAuth"));
 app.use('/sms', require('./sendMessage'))
 
 db.sync().then(() => {
