@@ -25,11 +25,11 @@ const app = express()
 const port = process.env.PORT || "5000"
 
 app.use(cors(
-//     {
-//     name: "session",
-//     origin: "https://intouchttp.netlify.app",
-//     credentials: true
-// }
+    {
+    name: "session",
+    origin: "https://intouchttp.netlify.app",
+    credentials: true
+}
 ))
 app.use(morgan('dev'))
 app.use(express.json())
