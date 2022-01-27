@@ -2,6 +2,11 @@ const Sequelize = require('sequelize')
 const db = require('./database')
 
 const Friend = db.define('friends', {
+    friend_id : {
+        type : Sequelize.STRING,
+        primaryKey : true,
+        allowNull : false
+    },
     firstName:{
         type: Sequelize.STRING,
         allowNull: false
