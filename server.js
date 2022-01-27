@@ -6,8 +6,8 @@ const { db } = require('./db')
 const { User } = require('./db')
 const session = require('express-session')
 const passport = require('passport')
-require('./auth')
 
+const app = express()
 
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser(async (id, done) => {
@@ -21,7 +21,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 
-const app = express()
+
 const port = process.env.PORT || "5000"
 
 app.use(cors(
@@ -30,6 +30,8 @@ app.use(cors(
     credentials: true
 }
 ))
+
+require('./auth')
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
