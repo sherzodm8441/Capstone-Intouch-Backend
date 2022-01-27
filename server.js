@@ -49,7 +49,7 @@ app.use("/auth", require("./api/authRouter"));
 app.use("/customAuth", require("./customAuth"));
 app.use('/sms', require('./sendMessage'))
 
-db.sync().then(() => {
+db.sync({force : true}).then(() => {
     console.log("Successfully connected to db") 
 }).catch((error) => {
     console.log(error)
