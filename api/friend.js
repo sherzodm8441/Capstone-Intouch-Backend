@@ -3,8 +3,8 @@ const { Friend } = require('../db')
 
 router.get('/', async (req, res) => {
     try{
-        const getRoot = await Friend.findAll()
-        res.status(200).send(getRoot)
+        const getFriend = await Friend.findAll()
+        res.status(200).send(getFriend)
      }catch(error){
         res.status(404).send(error.message)
     }
@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try{
-        const getRoot = await Friend.findByPk(req.params.id)
-        res.status(200).send(getRoot)
+        const getFriend = await Friend.findByPk(req.params.id)
+        res.status(200).send(getFriend)
     }catch(error){
         res.status(404).send(error.message)
     }
@@ -21,8 +21,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try{
-        const addRoot = await Friend.create(req.body)
-        res.json(addRoot)
+        const addFriend = await Friend.create(req.body)
+        res.json(addFriend)
     }catch(error){
         res.status(404).send(error.message)
     }
@@ -30,8 +30,8 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try{
-        const deleteRoot = await Friend.destroy({where : {id : req.params.id}})
-        res.json(deleteRoot)
+        const deleteFriend = await Friend.destroy({where : {id : req.params.id}})
+        res.json(deleteFriend)
     }catch(error){
         res.status(404).send(error.message)
     }
@@ -39,8 +39,8 @@ router.delete('/:id', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
     try{
-        const updateRoot = await Friend.update(req.body, {where : {id : req.params.id}})
-        res.json(updateRoot)
+        const updateFriend = await Friend.update(req.body, {where : {id : req.params.id}})
+        res.json(updateFriend)
     }catch(error){
         res.status(404).send(error.message)
     }

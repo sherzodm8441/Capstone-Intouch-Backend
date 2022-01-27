@@ -16,7 +16,6 @@ passport.use(
       let user = {};
       try {
         const currentUserQuery = await User.findOne({where : {googleId : account.sub}})
-        
 
         if (!currentUserQuery) {
           // create user
@@ -30,6 +29,7 @@ passport.use(
           console.log(id.dataValues.id)
           user = {
             id: id.dataValues.id,
+            googleId : account.sub,
             name: account.given_name,
             img: account.picture,
           };
@@ -37,6 +37,7 @@ passport.use(
           // have user
           user = {
             id: currentUserQuery.dataValues.id,
+            googleId : account.sub,
             name: currentUserQuery.dataValues.firstName,
             imageUrl: currentUserQuery.dataValues.imageUrl,
           };

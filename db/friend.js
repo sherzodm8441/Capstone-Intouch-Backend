@@ -8,18 +8,19 @@ const Friend = db.define('friends', {
     },
     lastName:{
         type: Sequelize.STRING,
-        allowNull: false
     },
     phone:{
         type: Sequelize.STRING,
-        allowNull: false
     },
-    interactions:{
+    strength:{
         type: Sequelize.INTEGER,
         allowNull: false
     },
     imageUrl : {
         type : Sequelize.STRING,
+    },
+    lastContact: {
+        type : Sequelize.DATE
     }
 })
 
