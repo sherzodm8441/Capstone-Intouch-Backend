@@ -26,7 +26,7 @@ const port = process.env.PORT || "5000"
 
 app.use(cors({
     name: "session",
-    origin: "https://intouchttp.netlify.app/",
+    origin: "https://intouchttp.netlify.app",
     credentials: true
 }))
 app.use(morgan('dev'))
