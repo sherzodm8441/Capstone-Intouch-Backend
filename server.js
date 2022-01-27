@@ -1,25 +1,53 @@
-// require('dotenv').config()
+require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const { db } = require('./db')
+const { User } = require('./db')
+const session = require('express-session')
+const passport = require('passport')
+require('./auth')
 
+
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findByPk(id);
+    done(null, user);
+  }
+  catch (err) {
+    done(err);
+  }
+});
 
 
 const app = express()
-const port = process.env.PORT || "3000"
+const port = process.env.PORT || "5000"
 
-app.use(cors())
+app.use(cors({
+    name: "session",
+    origin: "http://localhost:3000",
+    credentials: true
+}))
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
-// app.get('/', (req, res) =>{
-//     res.send("Running...")
-// } )
+
+app.use(session({secret : process.env.SESSION_SECRET, resave: false,
+    saveUninitialized: false,}))
+
+
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use('/api', require('./api/index'))
+app.use("/auth", require("./api/authRouter"));
+app.use("/customAuth", require("./customAuth"));
+app.use('/sms', require('./sendMessage'))
 
 db.sync().then(() => {
     console.log("Successfully connected to db") 

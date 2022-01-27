@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-router.use('/roots', require('./root'))
+router.use('/users', require('./user'))
 router.use('/friends', require('./friend'))
 
 

@@ -1,15 +1,15 @@
 const db = require('./database')
 const Friend = require('./friend')
-const Root = require('./root')
+const User = require('./user')
 
 //Set association
 
-Root.hasMany(Friend)
-Friend.belongsTo(Root)
+User.hasMany(Friend)
+Friend.belongsTo(User)
 
 
 module.exports = {
     db,
     Friend,
-    Root
+    User
 }
