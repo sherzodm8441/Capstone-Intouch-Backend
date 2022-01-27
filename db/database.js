@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 
 //process.env.DATABASE_URL + "?sslmode=no-verify"
 
-const db = new Sequelize('postgres://postgres:postgres@localhost:5432/intouch_db',
+const db = new Sequelize(process.env.DATABASE_URL + "?sslmode=no-verify",
     {logging : false}
 );
 
