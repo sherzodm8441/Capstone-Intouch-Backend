@@ -29,6 +29,10 @@ router.post("/signin", async (req, res, next) => {
     }
   });
 
+  router.get("/me", (req, res) => {
+    res.json(req.user);
+  });
+
 //   router.delete("/logout", (req, res, next) => {
 //     req.logout();
 //     req.session.destroy((err) => {
