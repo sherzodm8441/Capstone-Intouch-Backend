@@ -17,6 +17,8 @@ router.get("/login/success", (req, res) => {
         success: true,
         user: req.user,
       });
+    }else{
+        res.send("you are not logged in")
     }
   });
 
@@ -27,7 +29,7 @@ router.get( "/google",
 );
 
 router.get( "/google/callback",
-  passport.authenticate("google", { session: true, successRedirect: "https://intouchttp.netlify.app" }),
+  passport.authenticate("google", { session: true}),
   (req, res) => {
     res.send(req.user);
   }
@@ -46,7 +48,6 @@ router.get("/logout", (req, res) => {
       res.status(204)
     }
   });
-  res.redirect("http://localhost:5000/auth");
 });
 
 module.exports = router;
