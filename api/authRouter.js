@@ -18,7 +18,7 @@ router.get("/login/success", (req, res) => {
         user: req.user,
       });
     }else{
-        res.send("you are not logged in")
+        res.send("You are not logged in")
     }
   });
 
