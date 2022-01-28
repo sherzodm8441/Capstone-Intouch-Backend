@@ -16,7 +16,7 @@ router.post("/signup", async (req, res, next) => {
 router.post("/signin", async (req, res, next) => {
     try {
       const user = await User.findOne({ where: { firstName: req.body.firstName, password : req.body.password } });
-      //console.log(user)
+      
       if (!user) {
         res.status(401).send("Wrong username and/or password");
       }
