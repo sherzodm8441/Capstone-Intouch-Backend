@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try{
-        const deleteFriend = await Friend.destroy({where : {id : req.params.id}})
+        const deleteFriend = await Friend.destroy({where : {friendId : req.params.id}})
         res.json(deleteFriend)
     }catch(error){
         res.status(404).send(error.message)
@@ -39,7 +39,7 @@ router.delete('/:id', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
     try{
-        const updateFriend = await Friend.update(req.body, {where : {id : req.params.id}})
+        const updateFriend = await Friend.update(req.body, {where : {friendId : req.params.id}})
         res.json(updateFriend)
     }catch(error){
         res.status(404).send(error.message)
