@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-session-sequelize": "^7.1.2",
     "cors": "^2.8.5",
     "dotenv": "^14.3.0",
     "express": "^4.17.2",
