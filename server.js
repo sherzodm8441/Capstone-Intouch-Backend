@@ -40,6 +40,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
 app.enable('trust proxy');
+app.set('trust proxy', 1)
+
 app.use(session({
   secret : process.env.SESSION_SECRET, 
   resave: false,
@@ -47,6 +49,8 @@ app.use(session({
   store: sessionStore, 
   secureProxy: true,
   cookie: {
+    sameSite: 'none',
+    secure: true,
     expires: 60 * 60 * 24 * 60
   }
 }))
