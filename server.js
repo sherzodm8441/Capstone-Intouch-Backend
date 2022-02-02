@@ -29,10 +29,9 @@ const port = process.env.PORT || "5000"
 
 app.use(cors(
     {
-    // origin: "*",
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://intouchttp.netlify.app"],
     credentials: true
-}
+  }
 ))
 
 require('./auth')
