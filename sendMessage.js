@@ -3,6 +3,8 @@ const accountSid = process.env.ACCOUNT_S_ID;
 const authToken = process.env.AUTH_TOKEN; 
 const client = require('twilio')(accountSid, authToken); 
  
+//https://crud-intouch-backend.herokuapp.com/sms/send?recipient=${number}&message=${message}
+
 router.get('/send', (req, res) => {
     const { recipient, message } = req.query
 

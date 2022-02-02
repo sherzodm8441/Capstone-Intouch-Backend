@@ -33,16 +33,18 @@ router.post("/signin", async (req, res, next) => {
     res.json(req.user);
   });
 
-//   router.delete("/logout", (req, res, next) => {
-//     req.logout();
-//     req.session.destroy((err) => {
-//       if (err) {
-//         return next(err);
-//       }
-//       else {
-//         res.status(204).end();
-//       }
-//     });
-//   });
+router.get("/logout", (req, res) => {
+    req.logout();
+    req.session.destroy((err) => {
+    if (err) {
+      //return next(err);
+      console.log(error)
+    }
+    else {
+      res.status(204).send("logout success")
+    }
+  });
+  //res.redirect("/auth")
+});
 
 module.exports = router

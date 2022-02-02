@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { User } = require('../db')
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => { //returns a lsit of all users
   
         try{
             const getUser = await User.findAll()
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => { //returns a user with the specified id
     try{
         const getUser = await User.findByPk(req.params.id)
         res.status(200).send(getUser)
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res) => { //adds a user to the list
     try{
         const addUser = await User.create(req.body)
         res.json(addUser)
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => { //deletes a user with the specified id
     try{
         const deleteUser = await User.destroy({where : {id : req.params.id}})
         res.json(deleteUser)
@@ -40,7 +40,7 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => { //updates a user with the specified id
     try{
         const updateUser = await User.update(req.body, {where : {id : req.params.id}})
         res.json(updateUser)

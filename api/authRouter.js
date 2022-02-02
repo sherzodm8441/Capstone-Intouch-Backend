@@ -4,7 +4,7 @@ const passport = require("passport");
 
 router.get("/", (req, res) => {
     ////if(req.user){
-        res.send("hi auth");
+        res.send("hi");
     //}else{
     //    res.send('please login');
     //}
@@ -38,16 +38,18 @@ router.get( "/google/callback",
 //this is back in
 // , successRedirect: "https://intouchttp.netlify.app/"
 
-router.get("/logout", (req, res) => {
-    req.logout();
-    req.session.destroy((err) => {
-    if (err) {
-      return next(err);
-    }
-    else {
-      res.status(204)
-    }
-  });
-});
+// router.get("/logout", (req, res) => {
+//     req.logout();
+//     req.session.destroy((err) => {
+//     if (err) {
+//       //return next(err);
+//       console.log(error)
+//     }
+//     else {
+//       res.status(204)
+//     }
+//   });
+//   res.redirect("/auth")
+// });
 
 module.exports = router;
