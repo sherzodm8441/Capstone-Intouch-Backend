@@ -45,6 +45,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: sessionStore, 
+  secureProxy: true,
   cookie: {
     expires: 60 * 60 * 24 * 60
   }
