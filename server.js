@@ -29,7 +29,7 @@ const port = process.env.PORT || "5000"
 
 app.use(cors(
     {
-    origin: ["http://localhost:3000", "https://intouchttp.netlify.app"],
+    origin: ["http://localhost:3000", "https://intouchttp.netlify.app", "https://intouch-app.netlify.app"],
     credentials: true
   }
 ))
