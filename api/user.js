@@ -1,5 +1,7 @@
 const router = require('express').Router()
+const { BulkCountryUpdatePage } = require('twilio/lib/rest/voice/v1/dialingPermissions/bulkCountryUpdate')
 const { User } = require('../db')
+const bcrypt = require('bcrypt')
 
 router.get('/', async (req, res) => { //returns a lsit of all users
   
@@ -22,9 +24,22 @@ router.get('/:id', async (req, res) => { //returns a user with the specified id
     }
 })
 
+// router.post('/', async (req, res) => { //adds a user to the list
+//     try{
+//         const addUser = await User.create(req.body)
+//         res.json(addUser)
+//     }catch(error){
+//         res.status(404).send(error.message)
+//     }
+// })
+
 router.post('/', async (req, res) => { //adds a user to the list
     try{
-        const addUser = await User.create(req.body)
+        const hashedPassword = await bcrypt.hash(req.body.password)
+        const addUser = await User.create({
+            firstName : req.body.firstName,
+            password : hashedPassword
+        })
         res.json(addUser)
     }catch(error){
         res.status(404).send(error.message)

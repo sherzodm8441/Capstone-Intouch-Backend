@@ -7,6 +7,7 @@ const { User } = require('./db')
 const session = require('express-session')
 const passport = require('passport')
 
+
 const SequelizeStore = require("connect-session-sequelize")(session.Store)
 const sessionStore = new SequelizeStore({ db })
 
@@ -50,7 +51,7 @@ app.use(session({
   secureProxy: true,
   cookie: {
     sameSite: 'none',
-    secure: true,
+    secure: true, //set to true when deployed, comment out when running on localhost
     expires: 60 * 60 * 24 * 60
   }
 }))
